@@ -8,7 +8,7 @@ The Commands are:
 
 spotify-this-song
 
-![image](https://user-images.githubusercontent.com/46940564/56102020-74bd3200-5ef7-11e9-924d-c53a037c2d9a.png)
+![liri-spotify-this-song](https://user-images.githubusercontent.com/46940564/56102037-a2a27680-5ef7-11e9-99c7-aca4d24b703e.gif)
 
 movie-this
 
