@@ -4,6 +4,7 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 The Commands are:
 
 concert-this
+  https://giphy.com/gifs/jVN6uiXAJsXYNvHACE/html5
 
 spotify-this-song
 
