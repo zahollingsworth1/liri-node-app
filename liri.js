@@ -5,6 +5,9 @@ var axios = require("axios");
 var request = require("request");
 var keys = require("./key.js");
 
+var moment = require('moment');
+moment().format();
+
 var Spotify = require('node-spotify-api');
 
 var spotify = new Spotify(keys.spotify);
@@ -29,9 +32,9 @@ for (var i = 3; i < nodeArgs.length; i++) {
 console.log("hello")
 console.log(inputTitle + '\n' + '\n')
 
-UserInputs(switchCase, inputTitle);
+mainCase(switchCase, inputTitle);
 
-function UserInputs(switchCase, inputTitle) {
+function mainCase(switchCase, inputTitle) {
     switch (switchCase) {
         case 'concert-this':
             concertFun(inputTitle);
@@ -50,7 +53,6 @@ function UserInputs(switchCase, inputTitle) {
     }
 }
 
-
 function concertFun(inputTitle) {
     var queryUrl = "https://rest.bandsintown.com/artists/" + inputTitle + "/events?app_id=codingbootcamp";
     request(queryUrl, function (error, response, body) {
@@ -62,11 +64,13 @@ function concertFun(inputTitle) {
             var res = inputTitle.toUpperCase();
             console.log("UPCOMING SHOWS FOR " + res + " ARE...")
             for (var i = 0; i < concerts.length; i++) {
+                var date = (concerts[i].datetime).slice(0, -9);
+                var nDate = moment(date).format("MM/DD/YYYY")
                 console.log(i);
                 console.log("**********EVENT INFO*********");
                 console.log("Name of the Venue: " + concerts[i].venue.name);
                 console.log("Venue Location: " + concerts[i].venue.city);
-                console.log("Date of the Event: " + concerts[i].datetime);
+                console.log("Date of the Event: " + nDate);
                 console.log("*****************************");
             }
         } else {
@@ -105,7 +109,6 @@ function songFun(inputTitle) {
     );
 };
 
-
 function movieFun(inputTitle) {
     if (inputTitle === "") {
         inputTitle = "Mr. Nobody"
@@ -138,6 +141,6 @@ function someFun() {
             return console.log(err);
         }
         var dataArr = data.split(',');
-        UserInputs(dataArr[0], dataArr[1]);
+        mainCase(dataArr[0], dataArr[1]);
     });
 }
