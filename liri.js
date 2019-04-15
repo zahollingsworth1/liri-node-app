@@ -1,16 +1,17 @@
 require("dotenv").config();
 
+var keys = require("./key.js");
 var fs = require("fs");
 var axios = require("axios");
 var request = require("request");
-var keys = require("./key.js");
 
 var moment = require('moment');
-moment().format();
+    moment().format();
 
 var Spotify = require('node-spotify-api');
 
 var spotify = new Spotify(keys.spotify);
+
 var switchCase = process.argv[2];
 //var inputTitle = process.argv[3];
 
@@ -71,7 +72,7 @@ function concertFun(inputTitle) {
                 console.log("Name of the Venue: " + concerts[i].venue.name);
                 console.log("Venue Location: " + concerts[i].venue.city);
                 console.log("Date of the Event: " + nDate);
-                console.log("*****************************");
+                console.log("*****************************\n\n");
             }
         } else {
             console.log('Error occurred.');
@@ -103,7 +104,7 @@ function songFun(inputTitle) {
                 console.log("Preview song: " + songs[i].preview_url);
                 console.log("Album: " + songs[i].album.name);
                 console.log("Artist(s): " + songs[i].artists[0].name);
-                console.log("*****************************");
+                console.log("*****************************\n\n");
             }
         }
     );
