@@ -18,3 +18,17 @@ The Commands are:
 4. do-what-it-says
 
 ![liri-do-what-it-says](https://user-images.githubusercontent.com/46940564/56102097-63285a00-5ef8-11e9-8c19-254c037af528.gif)
+__________________________________________________________________________________________________________________________
+TECHNOLOGIES USED
+Javascript
+Nodejs
+  Node packages:
+    Node-Spotify-API
+    Request
+    axios
+    DotEnv
+  APIs used:
+    Bands in Town
+    OMDB
+Git
+GitHub
