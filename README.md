@@ -8,6 +8,8 @@ The Commands are:
 
 spotify-this-song
 
+![image](https://user-images.githubusercontent.com/46940564/56102020-74bd3200-5ef7-11e9-924d-c53a037c2d9a.png)
+
 movie-this
 
 do-what-it-says
