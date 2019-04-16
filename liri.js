@@ -55,30 +55,25 @@ function mainCase(switchCase, inputTitle) {
 }
 
 function concertFun(inputTitle) {
-    var queryUrl = "https://rest.bandsintown.com/artists/" + inputTitle + "/events?app_id=codingbootcamp";
-    request(queryUrl, function (error, response, body) {
-        // If the request is successful
-        if (!error) {
-            //console.log(body) That looks so ugly
-            var concerts = JSON.parse(body);
-            //console.log(concerts) //...better
-            var res = inputTitle.toUpperCase();
-            console.log("UPCOMING SHOWS FOR " + res + " ARE...")
-            for (var i = 0; i < concerts.length; i++) {
-                var date = (concerts[i].datetime).slice(0, -9);
+    
+    var URL = "https://rest.bandsintown.com/artists/" + inputTitle + "/events?app_id=codingbootcamp";
+    //console.log(URL);
+    
+    axios.get(URL).then(
+        function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+                var date = (response.data[i].datetime).slice(0, -9);
                 var nDate = moment(date).format("MM/DD/YYYY")
                 console.log(i);
                 console.log("**********EVENT INFO*********");
-                console.log("Name of the Venue: " + concerts[i].venue.name);
-                console.log("Venue Location: " + concerts[i].venue.city);
-                console.log("Date of the Event: " + nDate);
+                console.log("Venue: " + response.data[i].venue.name);
+                console.log("City: " + response.data[i].venue.city);
+                console.log("Date: " + nDate);
                 console.log("*****************************\n\n");
             }
-        } else {
-            console.log('Error occurred.');
-        }
-    });
+        });
 }
+
 
 function songFun(inputTitle) {
     
@@ -94,14 +89,15 @@ function songFun(inputTitle) {
             }
             //console.log(data)
             var songs = data.tracks.items;
-            //console.log(songs)
+            // var songs1 = data.tracks.items.external_urls;
+            // console.log(songs1)
 
 
             for (var i = 0; i < 5; i++) {
                 console.log(i);
                 console.log("**********SONG INFO*********");
                 console.log("Song name: " + songs[i].name);
-                console.log("Preview song: " + songs[i].preview_url);
+                console.log("Link to Song: " + songs[i].external_urls.spotify);
                 console.log("Album: " + songs[i].album.name);
                 console.log("Artist(s): " + songs[i].artists[0].name);
                 console.log("*****************************\n\n");
