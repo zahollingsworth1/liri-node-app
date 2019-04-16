@@ -28,7 +28,6 @@ ________________________________________________________________________________
 * Nodejs
 * Node packages:
     * Node-Spotify-API
-    * Request
     * axios
     * DotEnv
 * APIs used:
